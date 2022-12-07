@@ -3,6 +3,9 @@
     "version": "0.0.1",
     "description": "",
     "main": "server.js",
+    "engines": {
+        "node": "18.x"
+    },
     "scripts": {
         "test": "jest",
         "start": "node server.js",
