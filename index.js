@@ -1,8 +1,8 @@
 require("dotenv").config()
-require("express-async-errors")
+
 const sgMail = require("@sendgrid/mail")
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-const accessLogMiddleware = require("./middlewares/logger.middleware")
+
 const routes = require("./routes/api")
 
 const express = require("express")
@@ -85,8 +85,6 @@ setInterval(() => {
         }
     })
 }, 6000)
-
-app.use(accessLogMiddleware)
 
 app.use("/", routes)
 
