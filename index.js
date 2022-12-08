@@ -26,7 +26,7 @@ const msgTrue = [
         html: "<strong>Online</strong>"
     },
     {
-        to: "dunikovskiy@gmail.com",
+        to: "stefandunikovskyi@gmail.com",
         from: "stefan090304@gmail.com",
         subject: "Signal!",
         html: "<strong>Online</strong>"
@@ -37,24 +37,24 @@ const msgFalse = [
     {
         to: "stefan090304@gmail.com",
         from: "stefan090304@gmail.com",
-        subject: "Signal!",
-        html: "<strong>Online</strong>"
+        subject: "No signal!",
+        html: "<strong>Offline</strong>"
     },
     {
         to: "stefandunikovskyi@gmail.com",
         from: "stefan090304@gmail.com",
-        subject: "Signal!",
-        html: "<strong>Online</strong>"
+        subject: "No signal!",
+        html: "<strong>Offline</strong>"
     }
 ]
 let toggle = true
 
 setInterval(() => {
     fetching().then((res) => {
-        console.log(res)
+        console.log(res, Date.now())
         if (res && toggle) {
             console.log("====================================")
-            console.log("online")
+            console.log("online send")
             console.log("====================================")
             msgTrue.map((massege) => {
                 sgMail
@@ -69,7 +69,7 @@ setInterval(() => {
             toggle = false
         } else if (!res && !toggle) {
             console.log("====================================")
-            console.log("ofline")
+            console.log("ofline send")
             console.log("====================================")
             msgFalse.map((massege) => {
                 sgMail
@@ -84,7 +84,7 @@ setInterval(() => {
             toggle = true
         }
     })
-}, 6000)
+}, 20000)
 
 app.use("/", routes)
 

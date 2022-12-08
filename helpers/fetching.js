@@ -1,12 +1,11 @@
 const axios = require("axios")
+
 const fetching = async () => {
     try {
-        //  const response = await axios("myhomerouter.hopto.org")
-
-        const response = await axios(process.env.SITE, { timeout: 6000 })
+        const response = await axios.get(process.env.SITE, { timeout: 5000 })
 
         return true
-    } catch (err) {
+    } catch (error) {
         return false
     }
 }
