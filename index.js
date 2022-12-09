@@ -2,7 +2,7 @@ require("dotenv").config()
 
 const sgMail = require("@sendgrid/mail")
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-
+const cron = require("node-cron")
 const routes = require("./routes/api")
 
 const express = require("express")
@@ -49,10 +49,9 @@ const msgFalse = [
 ]
 let toggle = false
 
-setInterval(() => {
+cron.schedule("* * * * *", () => {
     fetching().then((res) => {
         console.log(res, Date.now())
-
         if (res && toggle) {
             console.log("====================================")
             console.log("online send")
@@ -85,7 +84,44 @@ setInterval(() => {
             toggle = true
         }
     })
-}, 20000)
+})
+// setInterval(() => {
+//     fetching().then((res) => {
+//         console.log(res, Date.now())
+
+//         if (res && toggle) {
+//             console.log("====================================")
+//             console.log("online send")
+//             console.log("====================================")
+//             msgTrue.map((massege) => {
+//                 sgMail
+//                     .send(massege)
+//                     .then(() => {
+//                         console.log("Email sent")
+//                     })
+//                     .catch((error) => {
+//                         console.error(error)
+//                     })
+//             })
+//             toggle = false
+//         } else if (!res && !toggle) {
+//             console.log("====================================")
+//             console.log("ofline send")
+//             console.log("====================================")
+//             msgFalse.map((massege) => {
+//                 sgMail
+//                     .send(massege)
+//                     .then(() => {
+//                         console.log("Email sent")
+//                     })
+//                     .catch((error) => {
+//                         console.error(error)
+//                     })
+//             })
+//             toggle = true
+//         }
+//     })
+// }, 20000)
 
 app.use("/", routes)
 
