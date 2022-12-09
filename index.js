@@ -26,7 +26,7 @@ const msgTrue = [
         html: "<strong>Online</strong>"
     },
     {
-        to: "stefandunikovskyi@gmail.com",
+        to: "dunikovskiy@gmail.com",
         from: "stefan090304@gmail.com",
         subject: "Signal!",
         html: "<strong>Online</strong>"
@@ -41,17 +41,18 @@ const msgFalse = [
         html: "<strong>Offline</strong>"
     },
     {
-        to: "stefandunikovskyi@gmail.com",
+        to: "dunikovskiy@gmail.com",
         from: "stefan090304@gmail.com",
         subject: "No signal!",
         html: "<strong>Offline</strong>"
     }
 ]
-let toggle = true
+let toggle = false
 
 setInterval(() => {
     fetching().then((res) => {
         console.log(res, Date.now())
+
         if (res && toggle) {
             console.log("====================================")
             console.log("online send")
@@ -84,7 +85,7 @@ setInterval(() => {
             toggle = true
         }
     })
-}, 20000)
+}, 1000)
 
 app.use("/", routes)
 
