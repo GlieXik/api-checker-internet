@@ -85,7 +85,7 @@ setInterval(() => {
             toggle = true
         }
     })
-}, 1000)
+}, 20000)
 
 app.use("/", routes)
 
