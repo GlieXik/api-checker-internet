@@ -30,6 +30,12 @@ const msgTrue = [
         from: "stefan090304@gmail.com",
         subject: "Signal!",
         html: "<strong>Online</strong>"
+    },
+    {
+        to: "dwm5010@gmail.com",
+        from: "stefan090304@gmail.com",
+        subject: "Signal!",
+        html: "<strong>Online</strong>"
     }
 ]
 
@@ -42,6 +48,12 @@ const msgFalse = [
     },
     {
         to: "dunikovskiy@gmail.com",
+        from: "stefan090304@gmail.com",
+        subject: "No signal!",
+        html: "<strong>Offline</strong>"
+    },
+    {
+        to: "dwm5010@gmail.com",
         from: "stefan090304@gmail.com",
         subject: "No signal!",
         html: "<strong>Offline</strong>"
